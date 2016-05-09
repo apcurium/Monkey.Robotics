@@ -55,8 +55,15 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 			};
 
 			this._gattCallback.DeviceDisconnected += (object sender, DeviceConnectionEventArgs e) => {
-				this._guidToDevice.Remove (e.Device.ID);
-				this.DeviceDisconnected (this, e);
+                try
+                {
+                    this._guidToDevice.Clear();
+                    this.DeviceDisconnected (this, e); 
+                }
+                catch
+                {
+                    
+                }
 			};
 		}
 
@@ -72,13 +79,13 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 
 			// clear out the list
 			this._discoveredDevices = new List<IDevice> ();
-
+            _guidToDevice.Clear();
 			// start scanning
 			this._isScanning = true;
 			this._adapter.StartLeScan (this);
 
 			// in 10 seconds, stop the scan
-			await Task.Delay (10000);
+			await Task.Delay (30000);
 
 			// if we're still scanning
 			if (this._isScanning) {
