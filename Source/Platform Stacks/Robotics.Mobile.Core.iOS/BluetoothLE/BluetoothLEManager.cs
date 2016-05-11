@@ -34,7 +34,7 @@ namespace Robotics.Mobile.Core.iOS
 		{
 			get { return this._isScanning; }
 		} protected bool _isScanning = false;
-		protected const int _scanTimeout = 10000;
+		protected const int _scanTimeout = 30000;
 
 		//TODO: WAT?
 //		public CBPeripheralManagerState State
@@ -141,7 +141,7 @@ namespace Robotics.Mobile.Core.iOS
 			#endif
 
 			// in 10 seconds, stop the scan
-			await Task.Delay (10000);
+			await Task.Delay (30000);
 
 			// if we're still scanning
 			if (this._isScanning) {

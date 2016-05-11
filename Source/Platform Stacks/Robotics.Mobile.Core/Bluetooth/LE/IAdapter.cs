@@ -20,6 +20,8 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 		IList<IDevice> DiscoveredDevices { get; }
 		IList<IDevice> ConnectedDevices { get; }
 
+        bool BlueToothEnabled { get; }
+
 		// methods
 		void StartScanningForDevices ();
 		void StartScanningForDevices (Guid serviceUuid);

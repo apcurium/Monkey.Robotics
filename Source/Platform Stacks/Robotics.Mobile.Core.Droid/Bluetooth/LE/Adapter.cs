@@ -22,6 +22,11 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 		protected GattCallback _gattCallback;
 		protected IDictionary<Guid, IDevice> _guidToDevice = new Dictionary<Guid, IDevice>();
 
+        public bool BlueToothEnabled 
+        {
+            get { return _manager.Adapter.State == State.On; }
+        }
+
 		public bool IsScanning {
 			get { return this._isScanning; }
 		} protected bool _isScanning;
